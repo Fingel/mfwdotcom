@@ -14,7 +14,7 @@ def get_location_data(app, request):
         try:
             data = json.load(urlopen("http://freegeoip.net/json/" + ip))
         except:
-            data = {"error": True}
+            raise ValueError
     return data
 
 
@@ -26,8 +26,7 @@ def get_current_weather(location):
         data = json.load(urlopen(url))
         data = data['list'][0]
     except:
-        data = {"error": True}
-        return data
+        raise ValueError
     temperature = (data['main']['temp'] - 273.15) * 1.8000 + 32.00
     code = data['weather'][0]['id']
     return (temperature, get_weather_type(code))
@@ -42,8 +41,7 @@ def get_forecast(location):
         data = json.load(urlopen(url))
         data = data['list'][:3]
     except:
-        data = {"error": True}
-        return data
+        raise ValueError
     for d in data:
         forecast.append({
             "temp": kelvin_to_f(d["temp"]["day"]),
