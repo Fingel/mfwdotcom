@@ -21,9 +21,12 @@ def index():
     else:
         try:
             location = get_location_data(app, request)
-            temp, weather = get_current_weather(location)
-            forecast = get_forecast(location)
         except ValueError:
+            return render_template('index.html', error="freegeoip.net is down! Enter your location manually:")
+    try:
+        temp, weather = get_current_weather(location)
+        forecast = get_forecast(location)
+    except ValueError:
             return render_template('index.html', error="Can't find that fucking place!")
     return render_template('index.html', location=location, weather=weather, temp=temp, forecast=forecast)
 
