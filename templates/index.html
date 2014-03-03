@@ -57,7 +57,7 @@
             <p><center>{{ forecast[0].weather | replace("-", " ") | title }} / {{ forecast[0].temp|round|int }}&deg;F</center></p>
           </span>
           <span class="col-xs-4">
-            <h2>Day Ater</h2>
+            <h2>Day After</h2>
             <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[1].weather + '.png') }}"/>
             <p><center>{{ forecast[1].weather | replace("-", " ") | title }} / {{ forecast[1].temp|round|int }}&deg;F</center></p>
          </span>
