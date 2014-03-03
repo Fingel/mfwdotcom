@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <center>
+            {% if error is defined %}
+              <h1>{{ error }}</h1>
+              <a href="/">Try spelling it correctly this time</a>
+            {% else %}
+              <h1>The muthafucking weather in {{ location.city }}:</h1>
+              <a href="#" id="not-live">That's not where I fucking am!</a>
+              <span id="whereiam-wrapper" style="display: none">
+                <form class="form-inline">
+                  <input type="text" class="form-control" id="whereiam" placeholder="Santa Cruz, CA"/> <button class="btn btn-small" id="whereiambutton">That's where I'm at</button>
+                </form>
+              </span>
+              <img class="img-responsive main-img" src="{{ url_for('static', filename='img/' + weather + '.png')}}"/>
+              <p>{{weather | replace("-", " ") | title }} / {{ temp|round|int }}&deg;F</p>
+              <h2><strong>{{ weather | flavor_text }}</strong></h2>
+            </center>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <span class="col-xs-4">
+            <h2>Tomorrow</h2>
+            <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[0].weather + '.png') }}"/>
+            <p><center>{{ forecast[0].weather | replace("-", " ") | title }} / {{ forecast[0].temp|round|int }}&deg;F</center></p>
+          </span>
+          <span class="col-xs-4">
+            <h2>Day Ater</h2>
+            <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[1].weather + '.png') }}"/>
+            <p><center>{{ forecast[1].weather | replace("-", " ") | title }} / {{ forecast[1].temp|round|int }}&deg;F</center></p>
+         </span>
+          <span class="col-xs-4">
+            <h2>Day After That</h2>
+            <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[2].weather + '.png') }}"/>
+            <p><center>{{ forecast[2].weather | replace("-", " ") | title }} / {{ forecast[2].temp|round|int }}&deg;F</center></p>
+          </span>
+        </div>
+        {% endif %}
+        <hr>
+
+        <footer>
+          <p>Created by Austin Riba and Andrea Wayte</p>
+        </footer>
+      </div>
+       <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/vendor/jquery-1.10.1.min.js') }}"><\/script>')</script>
+
+        <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+        <script type="text/javascript">
+          $("#not-live").click(function(){
+            $("#whereiam-wrapper").show();
+          })
+
+          $("#whereiambutton").click(function(e){
+            e.preventDefault()
+            location.search = "?loc=" + $("#whereiam").val()
+          })
+        </script>
+    </body>
+</html>
