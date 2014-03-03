@@ -35,6 +35,9 @@
             {% if error is defined %}
               <h1>{{ error }}</h1>
               <a href="/">Try spelling it correctly this time</a><br/>
+              <form class="form-inline">
+                  <input type="text" class="form-control" id="whereiam" placeholder="Santa Cruz, CA"/> <button class="btn btn-small" id="whereiambutton">That's where I'm at</button>
+              </form>
               <img class="img-responsive" src="{{ url_for('static', filename='img/rain.png') }}"/>
             {% else %}
               <h1>The muthafucking weather in {{ location.city }}:</h1>
