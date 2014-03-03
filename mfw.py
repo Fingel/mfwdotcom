@@ -10,7 +10,7 @@ app.config.from_object('settings')
 
 @app.route('/')
 def index():
-    searchword = request.args.get('loc', '')
+    searchword = request.args.get('loc', '').replace('#', '')
     if searchword:
         split_word = searchword.split(',')
         if len(split_word) > 1:
