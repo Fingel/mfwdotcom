@@ -40,7 +40,7 @@
               </form>
               <img class="img-responsive" src="{{ url_for('static', filename='img/rain.png') }}"/>
             {% else %}
-              <h1>The muthafucking weather in {{ location.city }}:</h1>
+              <h1>The muthafucking weather in {{ location.city | title }}:</h1>
               <a href="#" id="not-live">That's not where I fucking am!</a>
               <span id="whereiam-wrapper" style="display: none">
                 <form class="form-inline">
