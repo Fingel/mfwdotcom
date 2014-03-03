@@ -52,17 +52,17 @@
         <!-- Example row of columns -->
         <div class="row">
           <span class="col-xs-4">
-            <h2>Tomorrow</h2>
+            <h3>Tomorrow</h3>
             <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[0].weather + '.png') }}"/>
             <p><center>{{ forecast[0].weather | replace("-", " ") | title }} / {{ forecast[0].temp|round|int }}&deg;F</center></p>
           </span>
           <span class="col-xs-4">
-            <h2>Day After</h2>
+            <h3>Day After</h3>
             <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[1].weather + '.png') }}"/>
             <p><center>{{ forecast[1].weather | replace("-", " ") | title }} / {{ forecast[1].temp|round|int }}&deg;F</center></p>
          </span>
           <span class="col-xs-4">
-            <h2>Day After That</h2>
+            <h3>Day After That</h3>
             <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[2].weather + '.png') }}"/>
             <p><center>{{ forecast[2].weather | replace("-", " ") | title }} / {{ forecast[2].temp|round|int }}&deg;F</center></p>
           </span>
@@ -71,7 +71,7 @@
         <hr>
 
         <footer>
-          <p>Created by Austin Riba and Andrea Wayte</p>
+          <p>Created by <a href="http://www.pedaldrivenprogramming.com">Austin Riba</a> and <a href="http://andreawayte.blogspot.com/">Andrea Wayte</a></p>
         </footer>
       </div>
        <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -88,5 +88,20 @@
             location.search = "?loc=" + $("#whereiam").val()
           })
         </script>
+        <!-- Piwik -->
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          _paq.push(["trackPageView"]);
+          _paq.push(["enableLinkTracking"]);
+
+          (function() {
+            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.toxiccode.com/";
+            _paq.push(["setTrackerUrl", u+"piwik.php"]);
+            _paq.push(["setSiteId", "5"]);
+            var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+            g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+<!-- End Piwik Code -->
     </body>
 </html>

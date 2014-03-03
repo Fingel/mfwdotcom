@@ -70,6 +70,6 @@ def get_weather_type(code):
     if code < 900:
         if code == 800:
             return "sunny"
-        elif code < 805:
+        else:
             return "cloudy"
     return "unknown"
