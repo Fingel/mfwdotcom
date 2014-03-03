@@ -10,6 +10,7 @@ app.config.from_object('settings')
 
 @app.route('/')
 def index():
+    print "made it"
     searchword = request.args.get('loc', '').replace('#', '')
     if searchword:
         split_word = searchword.split(',')
@@ -18,12 +19,12 @@ def index():
         else:
             location = {'city': split_word[0]}
     else:
-        location = get_location_data(app, request)
-    try:
-        temp, weather = get_current_weather(location)
-        forecast = get_forecast(location)
-    except ValueError:
-        return render_template('index.html', error="Can't find that fucking place!")
+        try:
+            location = get_location_data(app, request)
+            temp, weather = get_current_weather(location)
+            forecast = get_forecast(location)
+        except ValueError:
+            return render_template('index.html', error="Can't find that fucking place!")
     return render_template('index.html', location=location, weather=weather, temp=temp, forecast=forecast)
 
 
