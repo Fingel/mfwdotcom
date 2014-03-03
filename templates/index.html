@@ -34,7 +34,8 @@
           <center>
             {% if error is defined %}
               <h1>{{ error }}</h1>
-              <a href="/">Try spelling it correctly this time</a>
+              <a href="/">Try spelling it correctly this time</a><br/>
+              <img class="img-responsive" src="{{ url_for('static', filename='img/rain.png') }}"/>
             {% else %}
               <h1>The muthafucking weather in {{ location.city }}:</h1>
               <a href="#" id="not-live">That's not where I fucking am!</a>
