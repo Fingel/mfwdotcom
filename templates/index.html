@@ -34,18 +34,18 @@
           <center>
             {% if error is defined %}
               <h1>{{ error }}</h1>
+              <button class="btn btn-primary" id="share-loc">Share my location</button><br/>
               <form class="form-inline">
-                  <button class="btn btn-primary" id="share-loc">Share my location</button><br/>
                   Or:<br/>
                   <input type="text" class="form-control" id="whereiam" placeholder="Santa Cruz, CA"/> <button class="btn btn-small" id="whereiambutton">That's where I'm at</button>
               </form>
               <img class="img-responsive" src="{{ url_for('static', filename='img/rain.png') }}"/>
             {% else %}
               <h1>The muthafucking weather in {{ city | title }}:</h1>
-              <a href="#" id="not-live">That's not where I fucking am!</a>
+              <a href="#" id="not-live">That's not where I fucking am!</a><br/>
               <span id="whereiam-wrapper" style="display: none">
+                <button class="btn btn-primary" id="share-loc">Share my location</button><br/>
                 <form class="form-inline">
-                  <button class="btn btn-primary" id="share-loc">Share my location</button><br/>
                   Or:<br/>
                   <input type="text" class="form-control" id="whereiam" placeholder="Santa Cruz, CA"/> <button class="btn btn-small" id="whereiambutton">That's where I'm at</button>
                 </form>
