@@ -12,14 +12,14 @@ def get_location_data(app, request):
         ip = request.remote_addr
     if ip is not None:
         try:
-            response = json.load(urlopen("http://freegeoip.net/json/" + ip, None, 3))
-            data = {"mode": "ipaddr", "city": response['city'], "region_code": response["region_code"]}
+            response = json.load(urlopen("http://freegeoip.net/json/" + ip, None, 6))
+            data = {"mode": "latlng", "lat": str(response['latitude']), "lng": str(response["longitude"])}
         except:
             try:
                 #God this API is so innacurate.
                 response = json.load(urlopen("http://api.ipinfodb.com/v3/ip-city/?key="
                     + app.config['IPINFODB'] + "&ip=" + ip + "&format=json", None, 7))
-                data = {"mode": "ipaddr", "city": response['cityName'], "region_code": response["regionName"]}
+                data = {"mode": "latlng", "lat": response['latitude'], "lng": response["longitude"]}
             except:
                 raise OutOfApisError("Out of geolocation apis")
     return data
