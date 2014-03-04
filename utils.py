@@ -34,13 +34,13 @@ def get_current_weather(location):
         url = "http://api.openweathermap.org/data/2.5/find?q=%s%s&mode=json" % (city, region)
     try:
         data = json.load(urlopen(url))
+        if location['mode'] == 'search' or location['mode'] == 'ipaddr':
+            data = data['list'][0]
+        temperature = (data['main']['temp'] - 273.15) * 1.8000 + 32.00
+        code = data['weather'][0]['id']
+        w_city = data['name']
     except:
         raise ValueError
-    if location['mode'] == 'search' or location['mode'] == 'ipaddr':
-        data = data['list'][0]
-    temperature = (data['main']['temp'] - 273.15) * 1.8000 + 32.00
-    code = data['weather'][0]['id']
-    w_city = data['name']
     return (temperature, get_weather_type(code), w_city)
 
 
