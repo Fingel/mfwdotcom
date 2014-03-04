@@ -12,7 +12,7 @@ def get_location_data(app, request):
         ip = request.remote_addr
     if ip is not None:
         try:
-            response = json.load(urlopen("http://freegeoip.net/json/" + ip, None, 6))
+            response = json.load(urlopen("http://freegeoip.net/json/" + ip, None, 4))
             data = {"mode": "latlng", "lat": str(response['latitude']), "lng": str(response["longitude"])}
         except:
             try:
