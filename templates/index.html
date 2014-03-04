@@ -6,8 +6,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        {% if location is defined %}
-          <title>Muthafucking weather, {{ location.city | default('can\'t find that place!')}}</title>
+        {% if city is defined %}
+          <title>Muthafucking weather, {{ city | default('can\'t find that place!')}}</title>
         {% else %}
           <title>Muthafuckin error, muthafucka</title>
         {% endif %}
@@ -36,14 +36,18 @@
               <h1>{{ error }}</h1>
               Try spelling it correctly this time<br/>
               <form class="form-inline">
+                  <button class="btn btn-primary" id="share-loc">Share my location</button><br/>
+                  Or:<br/>
                   <input type="text" class="form-control" id="whereiam" placeholder="Santa Cruz, CA"/> <button class="btn btn-small" id="whereiambutton">That's where I'm at</button>
               </form>
               <img class="img-responsive" src="{{ url_for('static', filename='img/rain.png') }}"/>
             {% else %}
-              <h1>The muthafucking weather in {{ location.city | title }}:</h1>
+              <h1>The muthafucking weather in {{ city | title }}:</h1>
               <a href="#" id="not-live">That's not where I fucking am!</a>
               <span id="whereiam-wrapper" style="display: none">
                 <form class="form-inline">
+                  <button class="btn btn-primary" id="share-loc">Share my location</button><br/>
+                  Or:<br/>
                   <input type="text" class="form-control" id="whereiam" placeholder="Santa Cruz, CA"/> <button class="btn btn-small" id="whereiambutton">That's where I'm at</button>
                 </form>
               </span>
@@ -86,6 +90,15 @@
 
         <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
         <script type="text/javascript">
+          $("#share-loc").click(function(e){
+            e.preventDefault()
+            navigator.geolocation.getCurrentPosition(function(position){
+              console.log(position.coords.latitude)
+              console.log(position.coords.longitude)
+              location.search = "?latlng=" + position.coords.latitude + "," + position.coords.longitude
+            })
+          })
+
           $("#not-live").click(function(){
             $("#whereiam-wrapper").show();
           })
