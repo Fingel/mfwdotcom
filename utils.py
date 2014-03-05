@@ -59,6 +59,8 @@ def get_forecast(location):
         raise ValueError
     for d in data:
         forecast.append({
+            "min": kelvin_to_f(d["temp"]["min"]),
+            "max": kelvin_to_f(d["temp"]["max"]),
             "temp": kelvin_to_f(d["temp"]["day"]),
             "weather": get_weather_type(d["weather"][0]["id"])
         })

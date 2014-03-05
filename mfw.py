@@ -12,7 +12,6 @@ app.config.from_object('settings')
 def index():
     lat_long = request.args.get('latlng', '').replace('#', '')
     searchword = request.args.get('loc', '').replace('#', '')
-    print lat_long
     if lat_long:
         split_lat_long = lat_long.split(',')
         location = {'mode': 'latlng', 'lat': split_lat_long[0], 'lng': split_lat_long[1]}

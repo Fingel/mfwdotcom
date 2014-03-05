@@ -42,7 +42,7 @@
               <img class="img-responsive" src="{{ url_for('static', filename='img/rain.png') }}"/>
             {% else %}
               <h1>The muthafucking weather in {{ city | title }}:</h1>
-              <a href="#" id="not-live">That's not where I fucking am!</a><br/>
+              <p><a href="#" id="not-live">That's not where I fucking am!</a></p>
               <span id="whereiam-wrapper" style="display: none">
                 <button class="btn btn-primary" id="share-loc">Share my location</button><br/>
                 <form class="form-inline">
@@ -51,7 +51,8 @@
                 </form>
               </span>
               <img class="img-responsive main-img" src="{{ url_for('static', filename='img/' + weather + '.png')}}"/>
-              <p>{{weather | replace("-", " ") | title }} / {{ temp|round|int }}&deg;F</p>
+              <p>{{weather | replace("-", " ") | title }} /
+                <span class="temp">{{ temp | round | int}}</span>&deg;<span class="unit">F</span></p>
               <h2><strong>{{ weather | flavor_text }}</strong></h2>
             </center>
           </div>
@@ -64,17 +65,32 @@
           <span class="col-xs-4">
             <h3>Tomorrow</h3>
             <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[0].weather + '.png') }}"/>
-            <p><center>{{ forecast[0].weather | replace("-", " ") | title }} / {{ forecast[0].temp|round|int }}&deg;F</center></p>
+            <p>
+              <center>
+                {{ forecast[0].weather | replace("-", " ") | title }} <br/>
+                {{ forecast[0].min | round | int }} / {{ forecast[0].max | round | int }}&deg;F
+              </center>
+            </p>
           </span>
           <span class="col-xs-4">
             <h3>Day After</h3>
             <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[1].weather + '.png') }}"/>
-            <p><center>{{ forecast[1].weather | replace("-", " ") | title }} / {{ forecast[1].temp|round|int }}&deg;F</center></p>
+            <p>
+              <center>
+                {{ forecast[1].weather | replace("-", " ") | title }} <br/>
+                {{ forecast[1].min | round | int }} / {{ forecast[1].max | round | int }}&deg;F
+              </center>
+            </p>
          </span>
           <span class="col-xs-4">
             <h3>Day After That</h3>
             <img class="img-responsive" src="{{ url_for('static', filename='img/' + forecast[2].weather + '.png') }}"/>
-            <p><center>{{ forecast[2].weather | replace("-", " ") | title }} / {{ forecast[2].temp|round|int }}&deg;F</center></p>
+             <p>
+              <center>
+                {{ forecast[2].weather | replace("-", " ") | title }} <br/>
+                {{ forecast[2].min | round | int }} / {{ forecast[2].max | round | int }}&deg;F
+              </center>
+            </p>
           </span>
         </div>
         {% endif %}
