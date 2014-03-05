@@ -36,7 +36,7 @@ def get_current_weather(location):
         data = json.load(urlopen(url))
         if location['mode'] == 'search' or location['mode'] == 'ipaddr':
             data = data['list'][0]
-        temperature = (data['main']['temp'] - 273.15) * 1.8000 + 32.00
+        temperature = kelvin_to_f(data['main']['temp'])
         code = data['weather'][0]['id']
         w_city = data['name']
     except:

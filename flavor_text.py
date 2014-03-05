@@ -4,6 +4,10 @@ flavor_text = {'rain': [
         'Fuck you, water.',
         'Precipi-fucking-tation.',
         'Mutha fucking rain.',
+        'The shitty part of the water cycle',
+        'Because you just washed your car, sucka.',
+        'It\'s good for plants, sucks for you.',
+        'Stop bitching, it\' the same stuff they make beer out of.',
     ],
     'sunny': [
         'What are you doing inside? Get the fuck outside.',
@@ -25,7 +29,10 @@ flavor_text = {'rain': [
         'Don\'t eat the yellow snow today',
         'It\'s fucking snowing outside!',
         'Time to shovel some snow today, asshole',
-        'Make a snowman so I can wreck it later.',
+        'Go make a fucking snowman',
+        'Take a snowball to the face',
+        'There\'s snow! Pretend like you can\'t drive and don\'t go to work',
+        'It\'s cool until you live in it',
     ],
     'cloudy': [
         'Where the fuck did the sun go?',
@@ -34,6 +41,8 @@ flavor_text = {'rain': [
         'Today is UUUUUUUGLY',
         'Fucking clouds. I hate them.',
         'The sun says "I\'ll be back." You know, like in the movie Terminator?',
+        'Nothing special about today. Just another fucking boring, cloudy day',
+        'Couds: HOW DO THEY EVEN WORK',
     ],
     'light-rain': [
         'Damnit, it might rain today',
@@ -41,9 +50,15 @@ flavor_text = {'rain': [
         'Your fortune says "You may get wet today"',
         'Roll the fucking dice. Chance of rain',
         'Sure, you can still use it as an excuse to stay inside. You lazy piece of shit',
+        'Just pissin a little bit',
+        'Just enough to fuck up your smartphone',
     ],
     'thunder': [
         'Maybe today you will get a lightning scar like Harry Potter',
         'Caution: There\'s a mutha fucking storm today',
+        'May be we should just call it a day',
+        'ZEUS IS NOT AMUSED!',
+        'Hide yo kids, hide yo wife',
+
     ]
     }
